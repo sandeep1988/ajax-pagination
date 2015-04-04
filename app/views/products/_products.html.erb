@@ -11,4 +11,6 @@
         </div>
      <% end %>
 </div>
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
 <%= will_paginate @products %>

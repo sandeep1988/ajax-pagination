@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  helper_method :sort_column, :sort_direction
   # GET /products
   # GET /products.json
   def index
-    @products = Product.paginate(:per_page => 03, :page => params[:page])
+    @products = Product.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
     respond_to do |format|
     format.html # index.html.erb
     format.json { render json: @products }
@@ -76,4 +76,12 @@ end
     def product_params
       params.require(:product).permit(:title, :price)
     end
+
+    def sort_column
+    Product.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
 end

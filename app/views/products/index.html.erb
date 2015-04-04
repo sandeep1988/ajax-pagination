@@ -1,7 +1,11 @@
-<h1>Products</h1>
-<div id="products">
- <%= render "products/products" %>
-</div>
+<%= form_tag products_path, :method => 'get', :id => "products_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%#= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="products"><%= render 'products' %></div>
+<% end %>
+
 <script>
 $(function(){
    $('.pagination a').attr('data-remote', 'true')
