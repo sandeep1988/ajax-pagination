@@ -1,0 +1,9 @@
+<div class="listing">
+      <% @products.each do |product| %>
+        <div>
+     <span> <%= product.title %> </span>
+           <span> <%= product.price %>  </span>
+        </div>
+     <% end %>
+</div>
+<%= will_paginate @products %>

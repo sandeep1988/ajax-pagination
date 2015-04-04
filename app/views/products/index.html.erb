@@ -1,0 +1,9 @@
+<h1>Products</h1>
+<div id="products">
+ <%= render "products/products" %>
+</div>
+<script>
+$(function(){
+   $('.pagination a').attr('data-remote', 'true')
+});
+</script>
