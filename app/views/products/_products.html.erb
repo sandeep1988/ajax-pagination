@@ -1,8 +1,13 @@
+<table border="1">
+  <tr>
+  <th>Title</th>
+    <th>Price</th>
+  </tr>
 <div class="listing">
       <% @products.each do |product| %>
         <div>
-     <span> <%= product.title %> </span>
-           <span> <%= product.price %>  </span>
+     <tr> <td><%= product.title %> </td>
+           <td> <%= product.price %>  </td></tr>
         </div>
      <% end %>
 </div>
